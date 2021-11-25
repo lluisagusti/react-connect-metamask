@@ -17,7 +17,6 @@ function App() {
       setMetaMaskObject({ metaMaskConnected: true, metaMaskPresent });
       accounts = await web3.eth.getAccounts();
       setPublicKey(() => accounts[0]);
-      console.log("accounts[0] --> ", accounts[0]);
     } catch (error) {
       console.error("metmask error", error);
     }
