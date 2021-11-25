@@ -5,11 +5,10 @@ import MetaMaskOnboarding from "metamask-onboarding";
 function App() {
   const [{ metaMaskPresent, metaMaskConnected }, setMetaMaskObject] = useState({
     metaMaskPresent: false,
-    metaMaskConnected: false
+    metaMaskConnected: false,
   });
   const [publicKey, setPublicKey] = useState(null);
   const web3 = new Web3(Web3.givenProvider);
-  // const web3 = new Web3(Web3.givenProvider || "http://localhost/8545");
 
   const connectMetaMask = async () => {
     let accounts;
@@ -28,6 +27,7 @@ function App() {
     const isMetaMaskPresent = () => {
       return web3?.givenProvider?.isMetaMask ? true : false;
     };
+
     setMetaMaskObject(() =>
       isMetaMaskPresent()
         ? { metaMaskPresent: true, metaMaskConnected }
@@ -57,7 +57,9 @@ function App() {
           Connect MetaMask Wallet
         </button>
       )}
-      {publicKey && publicKey !== null && <h3>Account's address: {publicKey}</h3>}
+      {publicKey && publicKey !== null && (
+        <h3>Account's address: {publicKey}</h3>
+      )}
     </div>
   );
 }
